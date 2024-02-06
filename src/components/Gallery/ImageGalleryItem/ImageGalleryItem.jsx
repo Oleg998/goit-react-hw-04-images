@@ -1,19 +1,20 @@
 import Modal from '../Modal/Modal';
 import css from './ImmageGalleryItem.module.css';
-import { Component } from 'react';
+import { useState } from 'react';
 
-export default class ImmageGalleryItem extends Component {
-  state = { openModal: false, imgDetails: {} };
-  showModal = ({ info, modalImg }) => {
-    this.setState({ openModal: true, imgDetails: { info, modalImg } });
+const  ImmageGalleryItem = ({ webImg, info, modalImg})=> {
+  const [openModal , setOpenModal]= useState ( false);
+  const [imgDetails, setimgDetails]=useState ({});
+  
+  const showModal = ({ info, modalImg }) => {
+    setOpenModal (true );
+    setimgDetails({ info, modalImg });
   };
-  closeModal = () => {
-    this.setState({ openModal: false, imgDetails: {} });
+  const closeModal = () => {
+    setOpenModal(false);
+    setimgDetails({});
   };
-  render() {
-    const { webImg, info, modalImg } = this.props;
-    const { showModal, closeModal } = this;
-    const { openModal, imgDetails } = this.state;
+  
 
     return (
       <>
@@ -34,4 +35,4 @@ export default class ImmageGalleryItem extends Component {
       </>
     );
   }
-}
+export default ImmageGalleryItem

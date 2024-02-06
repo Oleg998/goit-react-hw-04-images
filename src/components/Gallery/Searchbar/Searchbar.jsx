@@ -1,36 +1,34 @@
-import { Component } from 'react';
+import { useState , useRef, useEffect} from 'react';
 import css from './Searchbar.module.css';
 
 import { toast } from 'react-toastify';
 
-class Searchbar extends Component {
-  state = {
-    search: '',
-   
-  };
+const Searchbar = ({onSubmit}) =>{
 
-  handleChange = ({ target }) => {
+  const [state , setState]= useState({search:""})
+  const inputRef = useRef();
+
+  useEffect(()=>{inputRef.carrent.focus()},[])
+
+
+  const  handleChange = ({ target }) => {
     const { name, value } = target;
-    this.setState({
+    setState({...state,
       [name]: value,
     });
   };
 
-  handelSubmit = e => {
+  const handelSubmit = e => {
     e.preventDefault();
-    if (this.state.search.trim() === '') {
+    if (state.search.trim() === '') {
       toast.error('Enter text to search the gallery');
       return;
     }
-    this.props.onSubmit(this.state.search);
-    this.setState({
-      search: '',
-    });
+    onSubmit({ ...state });
+    setState({ search: '' });
   };
 
-  render() {
-    const { handleChange, handelSubmit } = this;
-    const { search } = this.state;
+
     return (
       <header className={css.searchbar}>
         <form onSubmit={handelSubmit} className={css.SearchForm}>
@@ -39,7 +37,8 @@ class Searchbar extends Component {
           </button>
 
           <input
-            value={search}
+            ref={inputRef}
+            value={state.search}
             onChange={handleChange}
             className={css.SearchForminput}
             type="text"
@@ -52,6 +51,6 @@ class Searchbar extends Component {
       </header>
     );
   }
-}
+
 
 export default Searchbar;

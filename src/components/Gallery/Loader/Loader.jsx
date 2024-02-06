@@ -1,12 +1,12 @@
-import { Component } from 'react';
+
 import { Blocks } from 'react-loader-spinner';
 import css from "./Loader.module.css"
 
-class Loader extends Component {
-  render() {
+const Loader=()=> {
+  
     return (
       <div className={css.wrapper}> 
-        {' '}
+        
         <Blocks
           height="80"
           width="80"
@@ -18,7 +18,7 @@ class Loader extends Component {
         />
       </div>
     );
-  }
+  
 }
 
 export default Loader;
