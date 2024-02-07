@@ -41,7 +41,7 @@ const App = () => {
     if (query) {
       fetchQuery();
     }
-  }, [query, page, gallery]);
+  }, [query, page]);
 
   const handelSearchForm = searchQuery => {
     if (query === searchQuery.toLowerCase()) {

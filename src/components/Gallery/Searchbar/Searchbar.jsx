@@ -11,12 +11,14 @@ const Searchbar = ({onSubmit}) =>{
   useEffect(()=>{inputRef.current.focus();},[])
 
 
-  const  handleChange = ({ target }) => {
-    const { name, value } = target;
-    setState({...state,
-      [name]: value,
-    });
-  };
+    const handleChange = ({ target }) => {
+      const { name, value } = target;
+      setState(prevState => ({
+        ...prevState,
+        [name]: value,
+      }));
+    };
+
 
   const handelSubmit = e => {
     e.preventDefault();
@@ -24,7 +26,7 @@ const Searchbar = ({onSubmit}) =>{
       toast.error('Enter text to search the gallery');
       return;
     }
-    onSubmit({ ...state });
+    onSubmit(state.search);
     setState({ search: '' });
   };
 
