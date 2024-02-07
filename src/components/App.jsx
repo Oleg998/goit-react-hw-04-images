@@ -22,7 +22,7 @@ const App = () => {
     const fetchQuery = async () => {
       try {
         const { data } = await searceImg(query, page);
-        if (totalHits) {
+        if (data.totalHits) {
           toast.error(
             '❌Sorry, there are no images matching your search query. Please try again.'
           );
@@ -41,7 +41,7 @@ const App = () => {
     if (query) {
       fetchQuery();
     }
-  }, [query, page]);
+  }, [query, page,gallery]);
 
   const handelSearchForm = searchQuery => {
     if (query === searchQuery.toLowerCase()) {
