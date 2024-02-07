@@ -28,7 +28,7 @@ const App = () => {
           );
         }
         setGallery(prevGallery =>
-          data.hits?.length ? [...prevGallery, ...data.hits] : gallery
+          data.hits?.length ? [...prevGallery, ...data.hits] : prevGallery
         );
         setTotalHits(data.totalHits);
         setIsLoading(true);
