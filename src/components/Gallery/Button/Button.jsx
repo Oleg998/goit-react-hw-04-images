@@ -1,15 +1,11 @@
-import css from "./Button.module.css"
+import css from './Button.module.css';
 
-
-const Button = ({ onClick ,type="submit" , children }) => {
+const Button = ({ onClick, type = 'submit', children }) => {
   return (
-    <button onClick={onClick}type={type} className={css.Button}>
+    <button onClick={onClick} type={type} className={css.Button}>
       {children}
     </button>
   );
 };
 
-
-
-
-export default Button
+export default Button;

@@ -18,7 +18,7 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [totalHits, setTotalHits] = useState('');
 
-   useEffect(() => {
+  useEffect(() => {
     const fetchQuery = async () => {
       try {
         const { data } = await searceImg(query, page);
