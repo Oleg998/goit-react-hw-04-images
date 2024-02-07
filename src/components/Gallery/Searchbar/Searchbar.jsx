@@ -8,7 +8,7 @@ const Searchbar = ({onSubmit}) =>{
   const [state , setState]= useState({search:""})
   const inputRef = useRef();
 
-  useEffect(()=>{inputRef.carrent.focus()},[])
+  useEffect(()=>{inputRef.current.focus();},[])
 
 
   const  handleChange = ({ target }) => {
