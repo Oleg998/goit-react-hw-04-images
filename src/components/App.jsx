@@ -41,14 +41,14 @@ const App = () => {
     if (query) {
       fetchQuery();
     }
-  }, [query, page,gallery]);
+  }, [query, page, gallery]);
 
   const handelSearchForm = searchQuery => {
     if (query === searchQuery.toLowerCase()) {
       return toast.info(`You're already reviewing the query ${searchQuery}`);
     }
     setGallery([]);
-    setQuery(searchQuery);
+    setQuery(searchQuery.toLowerCase());
     setPage(1);
   };
   const LoadMore = () => {
