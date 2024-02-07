@@ -22,16 +22,17 @@ const App = () => {
     const fetchQuery = async () => {
       try {
         const { data } = await searceImg(query, page);
-        if (data.totalHits) {
+        
+        setGallery(prevGallery =>
+          data.hits?.length ? [...prevGallery, ...data.hits] : prevGallery 
+        );
+        setTotalHits(data.totalHits);
+        setIsLoading(true);
+        if (!data.totalHits) {
           toast.error(
             '❌Sorry, there are no images matching your search query. Please try again.'
           );
         }
-        setGallery(prevGallery =>
-          data.hits?.length ? [...prevGallery, ...data.hits] : prevGallery
-        );
-        setTotalHits(data.totalHits);
-        setIsLoading(true);
       } catch (error) {
         setError(error.message);
       } finally {
